@@ -7,7 +7,7 @@ main() {
     sleep 3
     apt update
     apt upgrade
-    apt-get remove docker docker-engine docker.io containerd runc
+    apt-get remove docker docker-engine docker.io containerd runc || echo 'Looks like it was not there'
 
     apt install -y \
         apt-transport-https \
