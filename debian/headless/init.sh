@@ -58,10 +58,17 @@ EOF
         docker-compose-plugin
     apt-mark hold kubelet kubeadm kubectl    
 
-    groupadd docker
+    groupadd docker || echo 'Group already exists...'
     usermod -aG docker roman
+    chmod 666 /var/run/docker.sock
     echo '#includedir /etc/sudoers.d' >> /etc/sudoers
     echo 'roman ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+    echo 'Disabling swap to allow joining the k8s cluster.'
+    echo 'Re-enable if you want using:'
+    echo ''
+    echo 'sudo swapon -a'
+    echo ''
+    swapoff -a
 }
 
 main
