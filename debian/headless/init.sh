@@ -69,6 +69,11 @@ EOF
     echo 'sudo swapon -a'
     echo ''
     swapoff -a
+    echo 'Make sure you log into Docker:'
+    echo '`docker login`'
+    echo 'Also update the /etc/sysctl.conf file for the line with:'
+    echo 'Uncomment this line'
+    echo 'net.ipv4.ip_forward=1'
 }
 
 main
