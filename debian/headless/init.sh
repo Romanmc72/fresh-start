@@ -2,6 +2,8 @@
 
 set -euo pipefail
 
+export KUBERNETES_VERSION='1.23.6-00'
+
 main() {
     echo 'Ensure you are running as root, if not abort and start over...'
     sleep 3
@@ -51,9 +53,9 @@ EOF
 
     apt-get update
     apt-get install -y \
-        kubelet \
-        kubeadm \
-        kubectl \
+        "kubelet=${KUBERNETES_VERSION}" \
+        "kubeadm=${KUBERNETES_VERSION}" \
+        "kubectl=${KUBERNETES_VERSION}" \
         docker-ce \
         docker-ce-cli \
         containerd.io \
