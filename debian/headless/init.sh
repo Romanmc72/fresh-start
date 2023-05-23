@@ -42,8 +42,8 @@ EOF
     
     sysctl --system
 
-    # curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg \
-    #     https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    # The instructions online weren't working
+    # https://github.com/kubernetes/release/issues/2862#issuecomment-1533888814
     curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg \
         https://dl.k8s.io/apt/doc/apt-key.gpg
     
