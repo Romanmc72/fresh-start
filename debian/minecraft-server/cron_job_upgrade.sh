@@ -61,9 +61,7 @@ main() {
     sleep 300
     echo 'Running upgrade commands now!'
     current_dir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-    su -c "${current_dir}/upgrade_server.sh /media/drive/minecraft' - minecraft
-    echo 'Waiting for 15 minutes while upgrade runs...'
-    sleep 900
+    su -c "${current_dir}/upgrade_server.sh /media/drive/minecraft" - minecraft
     echo 'Restarting the server...'
     su -c "$(get_tmux_send_keys './start.sh 32')" - minecraft
     echo 'Waiting for 5 minutes then will check to see if server is running...'
