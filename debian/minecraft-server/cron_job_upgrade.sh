@@ -39,7 +39,7 @@ main() {
     }
 
     case "$#" in 
-        "$1" )
+        "1" )
             echo_help
             return 1
             ;;
