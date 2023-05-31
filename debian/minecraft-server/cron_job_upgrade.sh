@@ -55,11 +55,13 @@ main() {
     sleep 60
     su -c "$(get_tmux_send_keys 'say Shutting down the server now!!!')" - minecraft
     echo 'Stopping the current server...'
+    sleep 5
     su -c "$(get_tmux_send_keys stop)" - minecraft
     echo 'Stop command has been sent, waiting 5 minutes...'
     sleep 300
     echo 'Running upgrade commands now!'
-    su -c './upgrade_server.sh /media/drive/minecraft' - minecraft
+    current_dir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+    su -c "${current_dir}/upgrade_server.sh /media/drive/minecraft' - minecraft
     echo 'Waiting for 15 minutes while upgrade runs...'
     sleep 900
     echo 'Restarting the server...'
