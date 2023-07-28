@@ -45,11 +45,14 @@ main() {
             return 1
             ;;
     esac
+    apt update
+    apt upgrade -y
+    apt install nfs-common -y
     mkdir -p "${MOUNT_POINT}"
     mount -t nfs "${NFS_IP_ADDRESS}:${NFS_MOUNTED_POINT}" $MOUNT_POINT
     echo 'Ensuring this remounts at reboot'
     MOUNT_CONFIG="${NFS_IP_ADDRESS}:${NFS_MOUNTED_POINT} ${MOUNT_POINT} nfs defaults 0 0"
-    if [[ -z $(grep $MOUNT_CONFIG /etc/fstab) ]]
+    if [[ -z $(grep "$MOUNT_CONFIG" /etc/fstab) ]]
     then
         echo 'Setting up permanent remount'
         echo $MOUNT_CONFIG | tee -a /etc/fstab

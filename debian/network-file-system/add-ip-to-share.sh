@@ -53,7 +53,7 @@ main() {
             ;;
     esac
     LINE_TO_ADD="${MOUNT_POINT} ${IP_ADDRESS}${ACCESS_LEVEL}" >> /etc/exports
-    if [[ -z $(grep LINE_TO_ADD /etc/exports) ]]
+    if [[ -z $(grep "$LINE_TO_ADD" /etc/exports) ]]
     then
         echo "Adding ${IP_ADDRESS} to ${ACCESS_LEVEL} at ${MOUNT_POINT}"
         echo $LINE_TO_ADD | tee -a /etc/exports
