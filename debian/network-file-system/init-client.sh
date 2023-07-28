@@ -27,6 +27,7 @@ echo-init-client-help() {
 
 
 main() {
+    echo 'Ensure you are running as root!'
     case "$#" in
         "3" )
             case "$1" in
@@ -44,7 +45,6 @@ main() {
             return 1
             ;;
     esac
-    echo 'Ensure you are running as root!'
     mkdir -p "${MOUNT_POINT}"
     mount -t nfs "${NFS_IP_ADDRESS}:${NFS_MOUNTED_POINT}" $MOUNT_POINT
     echo 'Ensuring this remounts at reboot'
