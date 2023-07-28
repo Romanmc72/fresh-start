@@ -26,7 +26,7 @@ echo-init-server-help() {
 
 main() {
     echo 'Ensure you are running this under the root user!'
-    case "$@" in 
+    case "$#" in 
         "1" )
             case "$1" in
                 "h" | "help" | "-h" | "--help" )
