@@ -4,7 +4,7 @@ set -euo pipefail
 
 
 echo-restart-node-help() {
-    echo '| ./restart-node.sh $1'
+    echo '| ./restart-node.sh $1 $2 $3'
     echo '+=================================================================='
     echo '| Description'
     echo '| -----------'
@@ -26,7 +26,7 @@ echo-restart-node-help() {
 
 main() {
     case "$#" in
-        "$3" )
+        "3" )
             case "$1" in
                 'h' | 'help' | '-h' | '--help' )
                     echo-restart-node-help
