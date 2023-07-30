@@ -43,7 +43,7 @@ main() {
     TOKEN="$2"
     DISCOVERY_CA_CERT_HASH="$3"
     sudo swapoff -a
-    sudo kubeadm reset
+    sudo kubeadm reset --force
     sudo rm -r /etc/cni/net.d
     sudo kubeadm join \
         "${IP_AND_PORT}" \
