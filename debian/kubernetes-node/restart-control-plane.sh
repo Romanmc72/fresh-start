@@ -6,7 +6,7 @@ main() {
     echo '# Restarting the k8s cluster!'
     sudo swapoff -a
     rm -r $HOME/.kube
-    sudo kubeadm reset
+    sudo kubeadm reset --force
     sudo rm -r /etc/cni/net.d
     echo '# I only had to run these once when debuggin the docker traffic was not flowing'
     echo '# In the end the issue was this other file called `cat /etc/sysctl.conf`'
