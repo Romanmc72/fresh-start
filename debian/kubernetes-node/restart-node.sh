@@ -44,7 +44,15 @@ main() {
     DISCOVERY_CA_CERT_HASH="$3"
     sudo swapoff -a
     sudo kubeadm reset
-    sudo rm -r /etc/cni/net.d
+    sudo rm -rf /etc/cni/net.d
+    sudo iptables -F
+    sudo iptables -X
+    sudo iptables -t nat -F
+    sudo iptables -t nat -X
+    sudo iptables -t raw -F
+    sudo iptables -t raw -X
+    sudo iptables -t mangle -F
+    sudo iptables -t mangle -X
     sudo kubeadm join \
         "${IP_AND_PORT}" \
         --token "${TOKEN}" \
