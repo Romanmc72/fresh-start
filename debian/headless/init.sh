@@ -8,7 +8,7 @@ main() {
     echo 'Ensure you are running as root, if not abort and start over...'
     sleep 3
     apt update
-    apt upgrade
+    apt upgrade -y
     apt-get remove docker docker-engine docker.io containerd runc || echo 'Looks like it was not there'
 
     apt install -y \
