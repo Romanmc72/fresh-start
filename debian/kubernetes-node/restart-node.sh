@@ -42,17 +42,7 @@ main() {
     IP_AND_PORT="$1"
     TOKEN="$2"
     DISCOVERY_CA_CERT_HASH="$3"
-    sudo swapoff -a
-    sudo kubeadm reset --force
-    sudo rm -rf /etc/cni/net.d
-    sudo iptables -F
-    sudo iptables -X
-    sudo iptables -t nat -F
-    sudo iptables -t nat -X
-    sudo iptables -t raw -F
-    sudo iptables -t raw -X
-    sudo iptables -t mangle -F
-    sudo iptables -t mangle -X
+    ./common-reset.sh
     sudo kubeadm join \
         "${IP_AND_PORT}" \
         --token "${TOKEN}" \
