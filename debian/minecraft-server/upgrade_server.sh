@@ -21,6 +21,11 @@ main() {
         echo '| The root location of the minecraft server in your filesystem.'
         echo '| This script expects unix like file paths not windows.'
         echo '|'
+        echo '| $2 :MINECRAFT_VERSION: string [default:null]'
+        echo '| The specific minecraft server version to build. If not specified,'
+        echo '| the latest build tools build will be used with whatever its'
+        echo '| default happens to be.'
+        echo '|'
         echo '| Help'
         echo '| ----'
         echo '| Pass in either the incorrect number of arguments or one of the'
@@ -64,8 +69,18 @@ main() {
     echo 'Downloading Floodgate Plugin'
     wget https://download.geysermc.org/v2/projects/floodgate/versions/latest/builds/latest/downloads/spigot -O "${MINECRAFT_ROOT}/plugins/floodgate-spigot.jar"
 
+
     echo 'Building Spigot Server'
-    java -jar "${MINECRAFT_ROOT}/buildserver.jar"
+    case "$#" in
+        "2" )
+            echo "Building using version '$2'"
+            java -jar "${MINECRAFT_ROOT}/buildserver.jar" --rev "$2"
+            ;;
+        * )
+            echo 'Building using default version'
+            java -jar "${MINECRAFT_ROOT}/buildserver.jar"
+            ;;
+    esac
 
     echo 'Replace Server'
     mv spigot-1*.jar spigot-server.jar
