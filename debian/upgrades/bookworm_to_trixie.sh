@@ -17,7 +17,7 @@ main() {
     apt full-upgrade -y
     apt --purge autoremove -y
     sed -i 's/bookworm/trixie/g' /etc/apt/sources.list
-    find /etc/apt/sources.list.d -type f -exec sed -i 's/bookworm/trixie/g' {}
+    find /etc/apt/sources.list.d -type f -exec sed -i 's/bookworm/trixie/g' {} \;\n
     apt update
     apt upgrade -y
     apt full-upgrade -y
