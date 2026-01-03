@@ -7,7 +7,7 @@ main() {
     sudo swapoff -a
     rm -rf $HOME/.kube
     sudo kubeadm reset --force
-    sudo rm -r /etc/cni/net.d
+    sudo rm -rf /etc/cni/net.d
     echo '# I only had to run these once when debuggin the docker traffic was not flowing'
     echo '# In the end the issue was this other file called `cat /etc/sysctl.conf`'
     echo '# I had to uncomment the line that said #net.ipv4.ip_forward=1'
