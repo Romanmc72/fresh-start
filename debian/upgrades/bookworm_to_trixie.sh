@@ -3,7 +3,7 @@
 set -euo pipefail
 
 main() {
-    echo 'Upgrading from Debian 11 Bullseye to Debian 12 Bookworm'
+    echo 'Upgrading from Debian 12 Bookworm to Debian 13 Trixie'
     echo '...'
     echo 'Run as root or stop this script now.'
     sleep 3
@@ -21,9 +21,9 @@ main() {
     apt update
     apt upgrade -y
     apt full-upgrade -y
-    apt autoremove
+    apt autoremove -y
     echo 'Now reboot!'
-    echo 'systemct reboot'
+    echo 'systemctl reboot'
 }
 
 main

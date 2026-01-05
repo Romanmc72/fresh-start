@@ -16,8 +16,9 @@ main() {
     apt upgrade -y
     apt full-upgrade -y
     apt --purge autoremove -y
+    sed -i 's/ main / main contrib non-free non-free-firmware/g' /etc/apt/sources.list
     sed -i 's/bullseye/bookworm/g' /etc/apt/sources.list
-    find /etc/apt/sources.list.d -type f -exec sed -i 's/bullseye/bookworm/g' {} \;\n
+    find /etc/apt/sources.list.d -type f -exec sed -i 's/bullseye/bookworm/g' {} \;
     apt update
     apt upgrade -y
     apt full-upgrade -y
